@@ -1,10 +1,11 @@
+"use client"
 import React from 'react'
-import ImageSlider from './_components/ImageSlider'
+import AboutPage from '../_components/about'
 
 const page = () => {
   return (
     <div className='bg-gray-100'>
-      <ImageSlider/>
+      <AboutPage/>
     </div>
   )
 }
