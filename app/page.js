@@ -1,10 +1,10 @@
-import React from 'react';
-import Home from './_components/imageslider';
+import React from "react";
+import Home from "./_components/imageslider";
 
 
 const page = () => {
   return (
-    <div className='bg-gray-100'>
+    <div className="bg-gray-100">
       <Home/>
     </div>
   )

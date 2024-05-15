@@ -1,5 +1,5 @@
-import React from 'react';
-import { IoIosBrowsers } from 'react-icons/io';
+import React from "react";
+import { IoIosBrowsers } from "react-icons/io";
 
 const AboutPage = () => {
     return (

@@ -1,9 +1,9 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 const ContactPage = () => {
   return (
-    <div className='container mx-auto py-8'>
+    <div className="container mx-auto py-8">
       <h1 className="text-5xl font-bold mb-4 text-center font-serif mt-16">Contact Us</h1>
       <div className="container mx-auto py-8 flex flex-wrap justify-between">
 
@@ -41,7 +41,7 @@ const ContactPage = () => {
         </div>
 
         <div className="w-full lg:w-1/3  mt-16">
-          <Image src='https://scontent.fhyd14-2.fna.fbcdn.net/v/t1.6435-9/120235043_3157242221041648_2801305433604315275_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=4QTJHqzXc2oQ7kNvgEQZagy&_nc_ht=scontent.fhyd14-2.fna&oh=00_AYB9fAYEDrPeSlW0IibRwcmLVoqjElJaE8oqHGJ3lie0zA&oe=666A5C23' width={1000} height={800} alt='svecw' />
+          <Image src="https://scontent.fhyd14-2.fna.fbcdn.net/v/t1.6435-9/120235043_3157242221041648_2801305433604315275_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=4QTJHqzXc2oQ7kNvgEQZagy&_nc_ht=scontent.fhyd14-2.fna&oh=00_AYB9fAYEDrPeSlW0IibRwcmLVoqjElJaE8oqHGJ3lie0zA&oe=666A5C23" width={1000} height={800} alt="svecw" />
 
         </div>
       </div>

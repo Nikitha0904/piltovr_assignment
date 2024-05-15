@@ -1,10 +1,10 @@
 "use client"
-import React from 'react'
-import AboutPage from '../_components/about'
+import React from "react"
+import AboutPage from "../_components/about"
 
 const page = () => {
   return (
-    <div className='bg-gray-100'>
+    <div className="bg-gray-100">
       <AboutPage/>
     </div>
   )
