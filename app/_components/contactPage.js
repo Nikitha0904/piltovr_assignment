@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import { HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 
 const ContactPage = () => {
   return (
@@ -7,43 +7,75 @@ const ContactPage = () => {
       <h1 className="text-5xl font-bold mb-4 text-center font-serif mt-16">Contact Us</h1>
       <div className="container mx-auto py-8 flex flex-wrap justify-between">
 
-        <div className="w-full lg:w-2/3 mb-4 lg:mb-0 pr-4">
+        <div className="w-full lg:w-3/5 mb-8 lg:mb-0 pr-4">
+          
+            <div className="mb-8 bg-white rounded-lg shadow-lg p-8 ">
+              <h2 className="text-2xl font-semibold mb-4 font-serif ">Address</h2>
+              <p className="text-md mt-4 text-gray-700 leading-relaxed">
+                SHRI VISHNU ENGINEERING COLLEGE FOR WOMEN (Autonomous)<br />
+                APPROVED BY A.I.C.T.E & AFFILIATED TO JNTUK, KAKINADA<br />
+                Counseling Code – VISW<br />
+                Vishnupur, BHIMAVARAM – 534202<br />
+                West Godavari District, Andhra Pradesh, India.
+              </p>
+            </div>
 
-          <div className="mb-4">
-            <h2 className="text-2xl font-semibold mb-2 font-serif ">SHRI VISHNU ENGINEERING COLLEGE FOR WOMEN (Autonomous)</h2>
-            <p className="text-md mt-4 text-gray-700 leading-relaxed">
-              APPROVED BY A.I.C.T.E & AFFILIATED TO JNTUK, KAKINADA<br />
-              Counseling Code – VISW<br />
-              Vishnupur, BHIMAVARAM – 534202<br />
-              West Godavari District, Andhra Pradesh, India.
-            </p>
+            <div className="mb-8 bg-white rounded-lg shadow-lg p-8 ">
+              <h2 className="text-2xl font-semibold mb-4 font-serif ">Contact Information</h2>
+              <ul className="list-none">
+                <li className="mb-2">
+                  <span className="font-bold inline-block">Phone:</span> 08816 – 250864
+                </li>
+                <li className="mb-2">
+                  <span className="font-bold inline-block">Fax:</span> 08816 – 250099
+                </li>
+                <li className="mb-2">
+                  <span className="font-bold inline-block">Email:</span> info@svecw.edu.in, principal@svecw.edu.in
+                </li>
+              </ul>
+            </div>
           </div>
-
-          <ul className="list-none mb-4">
-            <li className="mb-2">
-              <span className="font-bold inline-block">Phone:</span> 08816 – 250864
-            </li>
-            <li className="mb-2">
-              <span className="font-bold inline-block">Fax:</span> 08816 – 250099
-            </li>
-            <li className="mb-2">
-              <span className="font-bold inline-block">Email:</span> info@svecw.edu.in, principal@svecw.edu.in
-            </li>
-            <li><span className="font-semibold inline-block mb-2">Main Office:</span>                        08765 - 898765</li>
-            <li><span className="font-semibold inline-block mb-2">Admissions Office:</span>                    09876 - 223456</li>
-            <li><span className="font-semibold inline-block mb-2">Department of Computer Science:</span>       06789 - 386542</li>
-            <li><span className="font-semibold inline-block mb-2">Department of Information Technology:</span> 08765 - 765478</li>
-            <li><span className="font-semibold inline-block mb-2">Department of Electrical Engineering:</span> 08765 - 786655</li>
-            <li><span className="font-semibold inline-block mb-2">Department of Mechanical Engineering:</span> 08765 - 897453</li>
-            <li><span className="font-semibold inline-block">Department of Civil Engineering:</span> 08765 - 897453</li>
-
-          </ul>
+       
+          <div className="w-full lg:w-2/5 ">
+  <div className="bg-white rounded-lg shadow-lg p-8">
+            <h2 className="text-2xl font-semibold mb-8 font-serif">Department Contacts</h2>
+            <ul className="list-none">
+              <li className="mb-6">
+                <h3 className="text-xl font-semibold mb-2">Computer Science</h3>
+                <p className="mb-2 flex items-center">
+                  <HiOutlineMail className="mr-2 hidden md:block " />
+                  <span className="font-semibold inline-block ">Email:</span> compsci@svecw.edu.in </p>
+                  <p className="mb-2 flex items-center">
+                  <HiOutlinePhone className="mr-2 mt-2 lg:mt-0  hidden md:block" />
+                  <span className="font-semibold inline-block ">Phone:</span> 06789 - 386542
+                </p>
+              </li>
+              <li className="mb-6">
+                <h3 className="text-xl font-semibold mb-2">Electrical Engineering</h3>
+                <p className="mb-2 flex items-center">
+                  <HiOutlineMail className="mr-2  hidden md:block" />
+                  <span className="font-semibold inline-block">Email:</span> eleceng@svecw.edu.in </p>
+                  <p className="mb-2 flex items-center">
+                  <HiOutlinePhone className="mr-2 mt-2 lg:mt-0  hidden md:block" />
+                  <span className="font-semibold inline-block">Phone:</span> 08765 - 786655
+                </p>
+              </li>
+              <li className="mb-6">
+                <h3 className="text-xl font-semibold mb-2">Mechanical Engineering</h3>
+                <p className="mb-2 flex items-center">
+                  <HiOutlineMail className="mr-2  hidden md:block" />
+                  <span className="font-semibold inline-block">Email:</span> mecheng@svecw.edu.in </p>
+                  <p className="mb-2 flex items-center">
+                  <HiOutlinePhone className="mr-2 mt-2 lg:mt-0  hidden md:block" />
+                  <span className="font-semibold inline-block">Phone:</span> 08765 - 897453
+                </p>
+              </li>
+              
+            </ul>
+          </div>
         </div>
 
-        <div className="w-full lg:w-1/3  mt-16">
-          <Image src="https://scontent.fhyd14-2.fna.fbcdn.net/v/t1.6435-9/120235043_3157242221041648_2801305433604315275_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=4QTJHqzXc2oQ7kNvgEQZagy&_nc_ht=scontent.fhyd14-2.fna&oh=00_AYB9fAYEDrPeSlW0IibRwcmLVoqjElJaE8oqHGJ3lie0zA&oe=666A5C23" width={1000} height={800} alt="svecw" />
-
-        </div>
+       
       </div>
     </div>
   );

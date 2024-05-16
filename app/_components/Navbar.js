@@ -13,6 +13,8 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  
+
   const toggleMenu = (id) => {
     setActiveMenu(activeMenu === id ? null : id);
   };
@@ -34,7 +36,9 @@ const Navbar = () => {
         { id: "mechEng", name: "Mechanical Engineering", path: "#" }
       ]
     },
-    { id: 4, name: "Contact Us", path: "/contact" }
+    { id: 4, name: "Contact Us", path: "/contact" },
+    { id: 5, name: "Branches", path: "/branches" },
+    { id: 6, name: "LOGIN", path: "/login" }
   ];
 
   return (
@@ -44,15 +48,17 @@ const Navbar = () => {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="flex items-center">
-                <Image src={"/logo.png"} width={65} height={65} alt="logo" />
+              <img src="/logo.png" alt="logo" style={{ width: "60px", height: "auto" }} />
+
+
                 <div className="ml-2">
-                  <h2 className="hidden lg:block text-white text-lg font-bold">Shri Vishnu Engineering College For Women</h2>
-                  <h3 className="hidden lg:block text-white text-md">Bhimavaram, Andhra Pradesh</h3>
+                  <h2 className="hidden xl:block text-white text-lg font-bold">Shri Vishnu Engineering College For Women</h2>
+                  <h3 className="hidden xl:block text-white text-md">Bhimavaram, Andhra Pradesh</h3>
                 </div>
               </div>
             </div>
           </div>
-          <div className="hidden sm:block">
+          <div className="hidden md:block">
             <div className="ml-4 flex items-center space-x-4">
               {menuList.map((menuItem) => (
                 <div key={menuItem.id}>
@@ -62,7 +68,7 @@ const Navbar = () => {
                       onMouseEnter={() => toggleMenu(menuItem.id)}
                       onMouseLeave={handleMouseLeave}
                     >
-                      <button className="text-white font-serif hover:white text-xl hover:font-bold p-1.5 flex items-center" onClick={() => toggleMenu(menuItem.id)}>
+                      <button className="text-white font-serif hover:white text-lg hover:font-bold p-1.5 flex items-center" onClick={() => toggleMenu(menuItem.id)}>
                         <span>{menuItem.name}</span>  <BsChevronDown className="ml-1" />
                       </button>
                       {activeMenu === menuItem.id && (
@@ -75,7 +81,7 @@ const Navbar = () => {
                       )}
                     </div>
                   ) : (
-                    <Link href={menuItem.path} className="text-white text-xl hover:white hover:font-bold rounded-lg p-1.5 font-serif">
+                    <Link href={menuItem.path} className="text-white text-lg hover:white hover:font-bold rounded-lg p-1.5 font-serif">
                       {menuItem.name}
                     </Link>
                   )}
@@ -84,7 +90,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="sm:hidden flex items-center">
+          <div className="md:hidden flex items-center">
             <button className="inline-flex items-center justify-center p-2 rounded-sm text-white sm:text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               onClick={toggleNavbar}>
               {<TfiAlignJustify />}
@@ -93,7 +99,7 @@ const Navbar = () => {
         </div>
       </div>
       {isOpen && (
-        <div className="sm:hidden bg-navy mt-2 relative z-20">
+        <div className="md:hidden bg-navy mt-2 relative z-20">
           <div className="ml-4 flex flex-col space-y-4">
             {menuList.map((menuItem) => (
               <div key={menuItem.id}>
@@ -115,7 +121,7 @@ const Navbar = () => {
                     )}
                   </div>
                 ) : (
-                  <Link href={menuItem.path} className="block hover:bg-gray-100  rounded-lg text-white hover:text-blue-700  hover:font-bold  p-2">
+                  <Link href={menuItem.path} onClick={toggleNavbar} className="block hover:bg-gray-100  rounded-lg text-white hover:text-blue-700  hover:font-bold  p-2">
                     {menuItem.name}
                   </Link>
                 )}
