@@ -35,14 +35,16 @@ export default function Home() {
     };
 
     return (
+        
         <div className="max-w-[1400px] h-[700px] w-full mx-auto py-16 px-4 mb-4">
+            
             <div style={{ backgroundImage: `url(${slides[currentIndex].url})` }} className="w-full h-full rounded-2xl bg-center bg-cover duration-500 mt-12"></div>
 
-            <div className="absolute top-[50%] transform -translate-y-1/2 left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
+            <div className="absolute top-[60%] transform -translate-y-1/2 left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
                 <BsChevronCompactLeft onClick={prevSlide} size={30} />
             </div>
 
-            <div className="absolute top-[50%] transform -translate-y-1/2 right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
+            <div className="absolute top-[60%] transform -translate-y-1/2 right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
                 <BsChevronCompactRight onClick={nextSlide} size={30} />
             </div>
             <div className="flex top-4 justify-center py-2 ">

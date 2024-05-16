@@ -38,7 +38,7 @@ const LoginForm = () => {
       <div className="bg-white w-full max-w-sm p-8 rounded-lg shadow-md ">
         <h2 className="text-2xl font-semibold mb-4 text-center">LOGIN</h2>
         {isLoggedIn ? (
-          <p className="text-green-500 mb-4 text-center">Login successful!</p>
+          <p className="text-green-500 mb-4 text-center">Login successful!</p> 
         ) : (
           errorMessage && <p className="text-red-500 mb-4 text-center">{errorMessage}</p>
         )}
