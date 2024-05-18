@@ -38,7 +38,10 @@ const Navbar = () => {
     },
     { id: 4, name: "Contact Us", path: "/contact" },
     { id: 5, name: "Branches", path: "/branches" },
-    { id: 6, name: "LOGIN", path: "/login" }
+    { id: 6, name: "Login", path: "/login" },
+    { id: 7, name: "Signup", path: "/signup" },
+    { id: 8, name: "Students", path: "/students" }
+
   ];
 
   return (
@@ -58,7 +61,7 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <div className="ml-4 flex items-center space-x-4">
               {menuList.map((menuItem) => (
                 <div key={menuItem.id}>
@@ -90,7 +93,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="md:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             <button className="inline-flex items-center justify-center p-2 rounded-sm text-white sm:text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               onClick={toggleNavbar}>
               {<TfiAlignJustify />}
@@ -99,7 +102,7 @@ const Navbar = () => {
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden bg-navy mt-2 relative z-20">
+        <div className="lg:hidden bg-navy mt-2 relative z-20">
           <div className="ml-4 flex flex-col space-y-4">
             {menuList.map((menuItem) => (
               <div key={menuItem.id}>

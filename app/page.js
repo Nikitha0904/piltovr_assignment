@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "./_components/imageslider";
+import Home from "../pages/imageslider";
 
 
 const page = () => {

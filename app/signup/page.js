@@ -1,10 +1,9 @@
-import React from "react"
-import ContactPage from "../../pages/contactPage"
-
+import React from 'react'
+import SignupForm from '../../pages/signupPage'
 const page = () => {
   return (
     <div className="bg-gray-100">
-      <ContactPage/>
+      <SignupForm/>
     </div>
   )
 }

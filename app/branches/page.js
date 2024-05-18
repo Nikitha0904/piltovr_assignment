@@ -1,5 +1,5 @@
 import React from 'react'
-import Branches from '../_components/branch'
+import Branches from '../../pages/branch'
 
 const page = () => {
   return (
