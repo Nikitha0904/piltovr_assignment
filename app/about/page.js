@@ -1,6 +1,6 @@
 "use client"
 import React from "react"
-import AboutPage from "../../pages/aboutPage"
+import AboutPage from "../aboutPage"
 
 const page = () => {
   return (
