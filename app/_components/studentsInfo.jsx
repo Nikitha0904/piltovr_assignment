@@ -39,17 +39,17 @@ const StudentsPage = () => {
           <tbody>
             {students.map((student, index) => (
               <tr key={student.userid}>
-                <td className="border border-gray-400 px-4 py-2">{index + 1}</td>
-                <td className="border border-gray-400 px-4 py-2">{student.name}</td>
-                <td className="border border-gray-400 px-4 py-2">{student.email}</td>
-                <td className="border border-gray-400 px-4 py-2">{student.phone}</td>
-                <td className="border border-gray-400 px-4 py-2">{student.address}</td>
-                <td className="border border-gray-400 px-4 py-2">
+                <td className="border border-gray-400 px-4 py-2 ">{index + 1}</td>
+                <td className="border border-gray-400 px-4 py-2 ">{student.name}</td>
+                <td className="border border-gray-400 px-4 py-2 ">{student.email}</td>
+                <td className="border border-gray-400 px-4 py-2 ">{student.phone}</td>
+                <td className="border border-gray-400 px-4 py-2 ">{student.address}</td>
+                <td className="border border-gray-400 px-4 py-2 min-w-40">
   {new Date(student.dob).toLocaleDateString('en-GB').replace(/\//g, '-')}
 </td>
 
 
-                <td className="border border-gray-400 px-4 py-2">{student.course}</td>
+                <td className="border border-gray-400 px-4 py-2 ">{student.course}</td>
               </tr>
             ))}
           </tbody>
