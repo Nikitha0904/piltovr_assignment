@@ -1,5 +1,6 @@
 import React from 'react'
-import StudentsPage from '../../pages/studentsInfo'
+import StudentsPage from '../studentsInfo'
+
 const page = () => {
   return (
     <div className="bg-gray-100">

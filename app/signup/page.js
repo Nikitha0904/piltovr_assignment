@@ -1,5 +1,5 @@
 import React from 'react'
-import SignupForm from '../../pages/signupPage'
+import SignupForm from '../signupPage'
 const page = () => {
   return (
     <div className="bg-gray-100">

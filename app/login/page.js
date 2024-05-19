@@ -1,5 +1,5 @@
 import React from "react"
-import LoginForm from "../../pages/loginPage"
+import LoginForm from "../loginPage"
 
 
 const page = () => {

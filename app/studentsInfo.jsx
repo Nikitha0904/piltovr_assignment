@@ -11,10 +11,12 @@ const StudentsPage = () => {
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get('/api/students'); 
-      setStudents(response.data);
+      const response = await fetch("/api/student");
+      const data = await response.json();
+      setStudents(data.students);
+      console.log("fetched.......")
     } catch (error) {
-      console.error('Error fetching students:', error);
+      console.error("Error fetching students:", error);
     }
   };
 

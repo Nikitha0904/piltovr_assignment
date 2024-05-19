@@ -23,13 +23,13 @@ const LoginForm = () => {
       });
 
       if (!res.ok) {
-        const error = await res.json();
-        throw new Error(error.message);
+        throw new Error('Failed to login');
       }
 
       const data = await res.json();
       setErrorMessage('');
 
+      // Fetch user data from jsonplaceholder only after successful login
       const allUsersRes = await fetch('https://jsonplaceholder.typicode.com/users');
       if (!allUsersRes.ok) {
         throw new Error('Failed to fetch users data');

@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from 'react';
-import axios from 'axios';
 
 const SignupForm = () => {
   const initialFormData = {
@@ -50,10 +49,23 @@ const SignupForm = () => {
     }
   
     try {
-      await axios.post('/api/signup', formData);
-      setError('');
-      setSignupSuccess(true);
-      clearForm(); 
+      const res = await fetch('/api/student', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setError('');
+        setSignupSuccess(data.success);
+        clearForm();
+      } else {
+        console.error('Server responded with an error:', res.status);
+        setError('Signup failed. Please try again.');
+      }
     } catch (error) {
       console.error('Signup failed:', error);
       setError('Signup failed. Please try again.');
@@ -101,8 +113,7 @@ const SignupForm = () => {
                 placeholder="Phone Number" 
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" 
               />
-              {invalidPhone && <p className="text-red-500">Phone number must be 10 digits</p>}
-
+              {invalidPhone && <p className="text-red-500">{invalidPhone}</p>}
             </div>
             <div>
               <input 
@@ -174,6 +185,7 @@ const SignupForm = () => {
             </div>
           </div>
           <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors">Signup</button>
+          {error && <p className="text-red-500">{error}</p>}
         </form>
       </div>
     </div>
@@ -181,4 +193,3 @@ const SignupForm = () => {
 };
 
 export default SignupForm;
-
