@@ -1,6 +1,8 @@
 import mysql from 'mysql2/promise';
 import bcrypt from 'bcrypt';
 
+require('dotenv').config();
+
 export default async function handler(req, res) {
     if (req.method === 'POST') {
         const { name, email, phone, address, dob, course, username, password } = req.body;
