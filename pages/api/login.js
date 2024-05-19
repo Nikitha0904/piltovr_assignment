@@ -5,12 +5,16 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         const { username, password } = req.body;
 
+        if (!username || !password) {
+            return res.status(400).json({ message: 'Username and password are required' });
+        }
+
         try {
             const connection = await mysql.createConnection({
-                host: 'localhost',       
-                user: 'root',            
-                password: '',            
-                database: 'college_website', 
+                host: process.env.DB_HOST || 'localhost',
+                user: process.env.DB_USER || 'root',
+                password: process.env.DB_PASSWORD || '',
+                database: process.env.DB_NAME || 'college_website',
             });
 
             const [rows] = await connection.execute('SELECT * FROM users WHERE username = ?', [username]);
@@ -27,6 +31,8 @@ export default async function handler(req, res) {
             } else {
                 res.status(404).json({ message: 'User not found' });
             }
+
+            await connection.end();
         } catch (error) {
             console.error('An error occurred while logging in:', error);
             res.status(500).json({ message: 'Error logging in' });
