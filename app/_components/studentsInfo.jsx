@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { Table, TableBody, TableHead, TableCell, TableRow, TableHeader } from "@/components/ui/table"; 
 
 const StudentsPage = () => {
   const [students, setStudents] = useState([]);
@@ -24,36 +24,32 @@ const StudentsPage = () => {
     <div className="container mx-auto px-4 py-8 min-h-screen">
       <h1 className="text-3xl font-bold mb-8 text-center mt-20">Student Details</h1>
       <div className="overflow-x-auto">
-        <table className="table-auto border-collapse w-full">
-          <thead>
-            <tr>
-              <th className="border border-gray-400 px-4 py-2">S.No</th>
-              <th className="border border-gray-400 px-4 py-2">Name</th>
-              <th className="border border-gray-400 px-4 py-2">Email</th>
-              <th className="border border-gray-400 px-4 py-2">Phone</th>
-              <th className="border border-gray-400 px-4 py-2">Address</th>
-              <th className="border border-gray-400 px-4 py-2">Date of Birth</th>
-              <th className="border border-gray-400 px-4 py-2">Course</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Table>
+        <TableHeader>
+            <TableRow>
+              <TableHead>S.No</TableHead>
+              <TableHead>Name</TableHead>
+              <TableHead>Email</TableHead>
+              <TableHead>Phone</TableHead>
+              <TableHead>Address</TableHead>
+              <TableHead>Date of Birth</TableHead>
+              <TableHead>Course</TableHead>
+            </TableRow>
+            </TableHeader>
+            <TableBody>
             {students.map((student, index) => (
-              <tr key={student.userid}>
-                <td className="border border-gray-400 px-4 py-2 ">{index + 1}</td>
-                <td className="border border-gray-400 px-4 py-2 ">{student.name}</td>
-                <td className="border border-gray-400 px-4 py-2 ">{student.email}</td>
-                <td className="border border-gray-400 px-4 py-2 ">{student.phone}</td>
-                <td className="border border-gray-400 px-4 py-2 ">{student.address}</td>
-                <td className="border border-gray-400 px-4 py-2 min-w-40">
-  {new Date(student.dob).toLocaleDateString('en-GB').replace(/\//g, '-')}
-</td>
-
-
-                <td className="border border-gray-400 px-4 py-2 ">{student.course}</td>
-              </tr>
+              <TableRow key={student.username}>
+                <TableCell>{index + 1}</TableCell>
+                <TableCell>{student.name}</TableCell>
+                <TableCell>{student.email}</TableCell>
+                <TableCell>{student.phone}</TableCell>
+                <TableCell>{student.address}</TableCell>
+                <TableCell>{new Date(student.dob).toLocaleDateString('en-GB').replace(/\//g, '-')}</TableCell>
+                <TableCell>{student.course}</TableCell>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
     </div>
   );

@@ -1,139 +1,100 @@
 "use client"
-import React, { useState } from "react";
-import { TfiAlignJustify } from "react-icons/tfi";
-import { BsChevronDown, BsX } from "react-icons/bs";
-import Image from "next/image";
-import Link from "next/link";
+import React, { useState } from 'react';
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(null);
-
-  const toggleNavbar = () => {
-    setIsOpen(!isOpen);
-  };
-
-  
-
-  const toggleMenu = (id) => {
-    setActiveMenu(activeMenu === id ? null : id);
-  };
-
-  const handleMouseLeave = () => {
-    setActiveMenu(null);
-  };
+  const [showMenu, setShowMenu] = useState(false); 
 
   const menuList = [
     { id: 1, name: "Home", path: "/" },
-
     { id: 2, name: "About Us", path: "/about" },
     {
       id: 3,
       name: "Departments",
-      subItems: [
-        { id: "compSci", name: "Computer Science", path: "#" },
-        { id: "elecEng", name: "Electrical Engineering", path: "#" },
-        { id: "mechEng", name: "Mechanical Engineering", path: "#" }
-      ]
     },
     { id: 4, name: "Contact Us", path: "/contact" },
     { id: 5, name: "Branches", path: "/branches" },
     { id: 6, name: "Login", path: "/login" },
     { id: 7, name: "Signup", path: "/signup" },
-    { id: 8, name: "Students", path: "/students" }
-
+    { id: 8, name: "Students", path: "/students" },
   ];
 
   return (
-    <nav className="bg-navy  fixed w-full mt-0">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <div className="flex items-center">
-              <img src="/logo.png" alt="logo" style={{ width: "60px", height: "auto" }} />
-
-
-                <div className="ml-2">
-                  <h2 className="hidden xl:block text-white text-lg font-bold">Shri Vishnu Engineering College For Women</h2>
-                  <h3 className="hidden xl:block text-white text-md">Bhimavaram, Andhra Pradesh</h3>
-                </div>
-              </div>
-            </div>
+    <NavigationMenu className="fixed w-full mt-0">
+      <div className="flex items-center justify-between mx-auto px-4 sm:px-6 lg:px-8 bg-navy w-screen h-20">
+        <div className="flex items-center">
+          <img src="/logo.png" alt="logo" style={{ width: "60px", height: "auto" }} className="mr-4" />
+          <div>
+            <h2 className="hidden xl:block text-white text-lg font-bold">Shri Vishnu Engineering College For Women</h2>
+            <h3 className="hidden xl:block text-white text-md">Bhimavaram, Andhra Pradesh</h3>
           </div>
-          <div className="hidden lg:block">
-            <div className="ml-4 flex items-center space-x-4">
+        </div>
+        <div className="lg:hidden">
+          <button onClick={() => setShowMenu(!showMenu)}>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+          {showMenu && (
+            <div className="flex flex-col items-start bg-navy text-white absolute top-20 left-0 w-full pl-4">
+              
               {menuList.map((menuItem) => (
-                <div key={menuItem.id}>
-                  {menuItem.subItems ? (
-                    <div
-                      className={`relative ${activeMenu === menuItem.id && "block"}`}
-                      onMouseEnter={() => toggleMenu(menuItem.id)}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      <button className="text-white font-serif hover:white text-lg hover:font-bold p-1.5 flex items-center" onClick={() => toggleMenu(menuItem.id)}>
-                        <span>{menuItem.name}</span>  <BsChevronDown className="ml-1" />
-                      </button>
-                      {activeMenu === menuItem.id && (
-                        <div className="absolute mt-0 top-full left-0 bg-white shadow-lg rounded-sm z-20">
-                          {menuItem.subItems.map((subItem) => (
-
-                            <Link key={subItem.id} href={subItem.path} className="block px-6 py-2 text-gray-800 hover:bg-gray-200">{subItem.name}</Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
+                <NavigationMenuItem key={menuItem.id} className="mb-2 list-none">
+                  {menuItem.name === "Departments" ? (
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <button className="text-white">{menuItem.name}</button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent>
+                        <DropdownMenuItem>Computer Science</DropdownMenuItem>
+                        <DropdownMenuItem>Electrical Engineering</DropdownMenuItem>
+                        <DropdownMenuItem>Mechanical Engineering</DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   ) : (
-                    <Link href={menuItem.path} className="text-white text-lg hover:white hover:font-bold rounded-lg p-1.5 font-serif">
-                      {menuItem.name}
-                    </Link>
+                    <NavigationMenuLink href={menuItem.path}>{menuItem.name}</NavigationMenuLink>
                   )}
-                </div>
+                </NavigationMenuItem>
               ))}
             </div>
-          </div>
-
-          <div className="lg:hidden flex items-center">
-            <button className="inline-flex items-center justify-center p-2 rounded-sm text-white sm:text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-              onClick={toggleNavbar}>
-              {<TfiAlignJustify />}
-            </button>
-          </div>
+          )}
+        </div>
+        <div className="hidden lg:flex lg:items-center text-white">
+          <NavigationMenuList className="list-none flex flex-col lg:flex-row">
+            {menuList.map((menuItem) => (
+              <NavigationMenuItem key={menuItem.id}>
+                {menuItem.name === "Departments" ? (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <button className="text-white">{menuItem.name}</button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuItem>Computer Science</DropdownMenuItem>
+                      <DropdownMenuItem>Electrical Engineering</DropdownMenuItem>
+                      <DropdownMenuItem>Mechanical Engineering</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <NavigationMenuLink href={menuItem.path}>{menuItem.name}</NavigationMenuLink>
+                )}
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
         </div>
       </div>
-      {isOpen && (
-        <div className="lg:hidden bg-navy mt-2 relative z-20">
-          <div className="ml-4 flex flex-col space-y-4">
-            {menuList.map((menuItem) => (
-              <div key={menuItem.id}>
-                {menuItem.id === 3 ? (
-                  <div className={`relative ${activeMenu === menuItem.id && "block"} `}>
-                    <div className="flex items-center justify-between hover:bg-gray-100 rounded-lg text-white hover:text-blue-700 hover:font-bold p-2">
-
-                      <span>{menuItem.name}</span>
-                      <button onClick={() => toggleMenu(menuItem.id)}>
-                        <span className="justify-end">{activeMenu === menuItem.id ? <BsX /> : <BsChevronDown />}</span>
-                      </button>
-                    </div>
-                    {activeMenu === menuItem.id && (
-                      <div className="mt-2 bg-white shadow-lg rounded-md">
-                        {menuItem.subItems.map((subItem, index) => (
-                          <Link key={index} href={subItem.path} className="block px-4 py-2 text-gray-800 hover:bg-gray-200 ">{subItem.name}</Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <Link href={menuItem.path} onClick={toggleNavbar} className="block hover:bg-gray-100  rounded-lg text-white hover:text-blue-700  hover:font-bold  p-2">
-                    {menuItem.name}
-                  </Link>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </nav>
+    </NavigationMenu>
   );
 };
 
