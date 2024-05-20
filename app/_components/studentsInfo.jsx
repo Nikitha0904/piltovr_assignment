@@ -38,7 +38,7 @@ const StudentsPage = () => {
           </thead>
           <tbody>
             {students.map((student, index) => (
-              <tr key={student.userid}>
+              <tr key={student.username}>
                 <td className="border border-gray-400 px-4 py-2 ">{index + 1}</td>
                 <td className="border border-gray-400 px-4 py-2 ">{student.name}</td>
                 <td className="border border-gray-400 px-4 py-2 ">{student.email}</td>
