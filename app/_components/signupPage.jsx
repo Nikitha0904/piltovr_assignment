@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 
 const SignupForm = () => {
   const initialFormData = {
@@ -62,6 +63,12 @@ const SignupForm = () => {
         setError('');
         setSignupSuccess(data.success);
         clearForm();
+        Swal.fire({
+          icon: 'success',
+          title: 'Signup successful!',
+          showConfirmButton: false,
+          timer: 1500
+        });
       } else {
         console.error('Server responded with an error:', res.status);
         setError('Signup failed. Please try again.');
@@ -76,9 +83,6 @@ const SignupForm = () => {
     <div className='flex justify-center items-center min-h-screen'>
       <div className="bg-white w-full max-w-lg p-8 rounded-lg shadow-md mt-24 mb-4">
         <h2 className="text-2xl font-semibold mb-4 text-center">SIGNUP</h2>
-        {signupSuccess ? ( 
-          <div className="text-green-500 mb-4 text-center">Signup successful!</div>
-        ) : null}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-4">
             <div>
