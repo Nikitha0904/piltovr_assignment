@@ -37,7 +37,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <img src="/logo.png" alt="logo" style={{ width: "60px", height: "auto" }} className="mr-4" />
           <div>
-            <h2 className="hidden xl:block text-white text-lg font-bold">Shri Vishnu Engineering College For Women</h2>
+            <h2 className="hidden xl:block text-white text-md font-bold">Shri Vishnu Engineering College For Women</h2>
             <h3 className="hidden xl:block text-white text-md">Bhimavaram, Andhra Pradesh</h3>
           </div>
         </div>
