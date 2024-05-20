@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from 'react';
 
 const LoginForm = () => {
@@ -6,6 +6,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [allUsers, setAllUsers] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleLogin = async () => {
     if (username.trim() === '' || password.trim() === '') {
@@ -22,14 +23,15 @@ const LoginForm = () => {
         body: JSON.stringify({ username, password })
       });
 
-      if (!res.ok) {
-        throw new Error('Failed to login');
+      const data = await res.json();
+
+      if (!data.success) {
+        throw new Error(data.msg);
       }
 
-      const data = await res.json();
+      setLoggedIn(true);
       setErrorMessage('');
 
-      // Fetch user data from jsonplaceholder only after successful login
       const allUsersRes = await fetch('https://jsonplaceholder.typicode.com/users');
       if (!allUsersRes.ok) {
         throw new Error('Failed to fetch users data');
@@ -37,7 +39,6 @@ const LoginForm = () => {
       const allUsersData = await allUsersRes.json();
       setAllUsers(allUsersData.filter(user => user.username !== username));
 
-      // Clear form fields
       setUsername('');
       setPassword('');
 
@@ -52,11 +53,12 @@ const LoginForm = () => {
     setPassword('');
     setAllUsers([]);
     setErrorMessage('');
+    setLoggedIn(false); // Set login status to false
   };
 
   return (
     <div className='min-h-screen bg-gray-100 flex justify-center items-center'>
-      {allUsers.length === 0 ? (
+      {!loggedIn ? (
         <div className="bg-white w-full max-w-sm p-8 rounded-lg shadow-md mt-10">
           <h2 className="text-2xl font-semibold mb-4 text-center text-gray-800">Login</h2>
           {errorMessage && <p className="text-red-500 mb-4 text-center">{errorMessage}</p>}
@@ -86,23 +88,20 @@ const LoginForm = () => {
           </button>
         </div>
       ) : (
-        <div >
-          <h1 className='font-serif font-bold text-md lg:text-2xl mt-24 mb-4 text-center'>User Details</h1>
-          <div className="w-5/6 grid grid-cols-1 lg:grid-cols-2 gap-12 mx-auto">
-            {allUsers.map((user, index) => (
-              <div key={user.id} className="bg-white rounded-lg shadow-lg hover:shadow-lg transition-shadow p-8">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800 text-center">{user.name}</h3>
-                <p className="text-gray-700"><strong>Username:</strong> {user.username}</p>
-                <p className="text-gray-700"><strong>Email:</strong> {user.email}</p>
-                <p className="text-gray-700"><strong>Address:</strong> {user.address.street}, {user.address.city}, {user.address.zipcode}</p>
-                <p className="text-gray-700"><strong>Phone:</strong> {user.phone}</p>
-                <p className="text-gray-700"><strong>Company:</strong> {user.company.name}</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-6">
+        <div className="w-5/6 grid grid-cols-1 lg:grid-cols-2 gap-12 mx-auto mt-24">
+          {allUsers.map((user) => (
+            <div key={user.id} className="rounded-lg shadow-lg hover:shadow-lg transition-shadow p-8 bg-white">
+              <h3 className="text-xl font-semibold mb-2 text-gray-800 text-center">{user.name}</h3>
+              <p className="text-gray-700"><strong>Username:</strong> {user.username}</p>
+              <p className="text-gray-700"><strong>Email:</strong> {user.email}</p>
+              <p className="text-gray-700"><strong>Address:</strong> {user.address.street}, {user.address.city}, {user.address.zipcode}</p>
+              <p className="text-gray-700"><strong>Phone:</strong> {user.phone}</p>
+              <p className="text-gray-700"><strong>Company:</strong> {user.company.name}</p>
+            </div>
+          ))}
+         <div className='flex items-center '>
   <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors mb-2" onClick={clearForm}>
-    Back 
+    Back
   </button>
 </div>
 
